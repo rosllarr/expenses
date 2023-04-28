@@ -7,12 +7,37 @@
     </thead>
     <tbody>
         {% for entry in entry_list %}
+        <!-- รายการที่เกิดขึ้นแล้ว -->
+        {% if entry.is_already_occurred %}
+        <tr>
+            <td><s>{{ entry.transection_date }}</s></td>
+            <td><s>{{ entry.title }}</s></td>
+            <td><s>{{ entry.income }}</s></td>
+            <td><s>{{ entry.expenses }}</s></td>
+        </tr>
+        <!-- รายการที่ยังไม่เกิดขึ้น -->
+        {% else %}
         <tr>
             <td>{{ entry.reserved_transection_date }}</td>
             <td>{{ entry.title }}</td>
             <td>{{ entry.income }}</td>
             <td>{{ entry.reserved_expenses }}</td>
         </tr>
+        {% endif %}
         {% endfor %}
     </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th>รวม</th>
+            <th>{{ income_of_month }}</th>
+            <th>{{ reserved_expenses_of_month }}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>เหลือ</th>
+            <th>{{ remain_of_month }}</th>
+            <th></th>
+        </tr>
+    </tfoot>
 </table>

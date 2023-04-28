@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 
 
 class Expenses(models.Model):
@@ -14,3 +15,6 @@ class Expenses(models.Model):
 
     def __str__(self):
         return self.title
+
+    def is_already_occurred(self):
+        return self.transection_date != date(1970, 1, 1)

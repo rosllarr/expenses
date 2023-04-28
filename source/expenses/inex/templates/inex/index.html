@@ -1,0 +1,18 @@
+<table>
+    <thead>
+        <th>วันที่</th>
+        <th>รายการ</th>
+        <th>รับ</th>
+        <th>จ่าย</th>
+    </thead>
+    <tbody>
+        {% for entry in entry_list %}
+        <tr>
+            <td>{{ entry.reserved_transection_date }}</td>
+            <td>{{ entry.title }}</td>
+            <td>{{ entry.income }}</td>
+            <td>{{ entry.reserved_expenses }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>

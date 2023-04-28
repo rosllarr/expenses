@@ -1,3 +1,6 @@
 from django.contrib import admin
 
-# Register your models here.
+from .models import Monthly, Tags
+
+admin.site.register(Monthly)
+admin.site.register(Tags)

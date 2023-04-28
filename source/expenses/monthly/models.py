@@ -11,4 +11,5 @@ class Tags(models.Model):
 class Monthly(models.Model):
     title = models.CharField(max_length=200)
     cost = models.DecimalField(max_digits=7, decimal_places=0, default=0)
-    transection_date = models.DateField(default=date(1970-1-1))
+    transection_date = models.DateField(default=date(1970, 1, 1))
+    tags = models.ManyToManyField(Tags)

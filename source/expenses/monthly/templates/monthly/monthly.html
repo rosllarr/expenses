@@ -1,0 +1,46 @@
+<h1>{{ entry_of_month|date:"M" }}</h1>
+<table>
+    <thead>
+        <th>วันที่</th>
+        <th>รายการ</th>
+        <th>รับ</th>
+        <th>จ่าย</th>
+    </thead>
+    <tbody>
+        {% for entry in entry_list %}
+        <!-- รายการที่เกิดขึ้นแล้ว -->
+        {% if entry.is_already_occurred %}
+        <tr>
+            <td><s>{{ entry.transection_date }}</s></td>
+            <td><s>{{ entry.title }}</s></td>
+            <td><s>{% for tag in entry.tags.all %}{% if tag.name == 'income' %}{{ entry.cost }}{% endif %}{% endfor %}</s></td>
+            <td><s>{% for tag in entry.tags.all %}{% if tag.name == 'expenses' %}{{ entry.cost }}{% endif %}{% endfor %}</s></td>
+        </tr>
+        <!-- รายการที่ยังไม่เกิดขึ้น -->
+        {% else %}
+        <tr>
+            <td>{{ entry.transection_date }}</td>
+            <td>{{ entry.title }}</td>
+            <td>{% for tag in entry.tags.all %}{% if tag.name == 'income' %}{{ entry.cost }}{% endif %}{% endfor %}</td>
+            <td>{% for tag in entry.tags.all %}{% if tag.name == 'expenses' %}{{ entry.cost }}{% endif %}{% endfor %}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th>รวม</th>
+            <th>{{ income_of_month }}</th>
+            <th>{{ expenses_of_month }}</th>
+        </tr>
+        <tr>
+            <th></th>
+            <th>เหลือ</th>
+            <th>{{ remain_of_month }}</th>
+            <th></th>
+        </tr>
+    </tfoot>
+</table>
+<h1><a href="{% url 'monthly:monthly' previous_month %}">pre</a></h1>
+<h1><a href="{% url 'monthly:monthly' previous_month %}">next</a></h1>

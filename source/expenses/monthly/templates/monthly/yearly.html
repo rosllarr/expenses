@@ -1,0 +1,26 @@
+<h1>รายจ่ายประจำปี</h1>
+<table>
+    <thead>
+        <tr>
+            <th>วันที่</th>
+            <th>รายการ</th>
+            <th>จำนวน</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in entry_of_expenses %}
+        <tr>
+            <td>{{ entry.transection_date }}</td>
+            <td>{{ entry.title }}</td>
+            <td>{{ entry.cost }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th>รวม</th>
+            <th>{{ expenses_of_year }}</th>
+        </tr>
+    </tfoot>
+</table>

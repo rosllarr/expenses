@@ -1,3 +1,43 @@
+<h1>เงินเก็บแต่ละเดือน</h1>
+<table>
+    <thead>
+        <tr>
+            <th>วันเงินเดือนเข้า</th>
+            <th>รายการ</th>
+            <th>เก็บ</th>
+            <th>ใช้ในเดือน</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for entry in entry_of_monthly_savings %}
+        <tr>
+            <td>{{ entry.transection_date }}</td>
+            <td>{{ entry.title }}</td>
+            <td>{{ entry.cost }}</td>
+            <td>{{ entry.transection_date|date:"M" }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <th></th>
+            <th>รวม</th>
+            <th>{{ monthly_savings_of_year }}</th>
+        </tr>
+    </tfoot>
+</table>
+
+<h1>เงินสะสม</h1>
+<table>
+    <tbody>
+        <tr><td>เงินเก็บปีนี้</td><td>{{ savings_in_year }}</td></tr>
+        <tr><td>เงินเก็บสะสมจากปีก่อน</td><td>{{ previous_savings }}</td></tr>
+        <tr><td>เงินเก็บรวม</td><td>{{ total_savings }}</td></tr>
+        <tr><td>เงินประกันรถปีนี้</td><td>{{ car_insurance }}</td></tr>
+        <tr><td>เงินเก็บรวม + เงินประกันรถปีนี้</td><td>{{ total_savings_with_car_insurance }}</td></tr>
+    </tbody>
+</table>
+
 <h1>รายจ่ายประจำปี</h1>
 <table>
     <thead>
